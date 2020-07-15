@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bubble animation</title>
+
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+
+  <img src="/images/imageedit_3_4692769095.png" width=" 300px" alt="">
+
+  <script type="module"
+    src="https://unpkg.com/@proyecto26/animatable-component@1.1.8/dist/animatable-component/animatable-component.esm.js"></script>
+  <script nomodule
+    src="https://unpkg.com/@proyecto26/animatable-component@1.1.8/dist/animatable-component/animatable-component.js"></script>
+
+  <script>
+
+
+    const body = document.body
+    const cont = Math.floor(Math.random() * 100) + 50;
+    for (let index = 0; index < cont; index++) {
+      const animateBubble = document.createElement('animatable-component')
+      animateBubble.keyFrames = [
+        {
+          offset: 0,
+          opacity: 0,
+          transform: 'translate(0, 0) scale(1)'
+        },
+        {
+          offset: 0.2,
+          opacity: 1
+        },
+        {
+          offset: 1,
+          opacity: 0,
+          transform: `translate(0, -100vh) scale(0.1)`
+        }
+      ]
+      animateBubble.autoPlay = true
+      animateBubble.duration = 12000 * Math.random() + 800
+      animateBubble.easing = 'ease-in-out'
+      animateBubble.delay = Math.random() * 1000
+      animateBubble.iterations = Infinity
+      animateBubble.classList.add('bubble')
+      animateBubble.style.left = `${Math.random() * 100}vw`
+      body.prepend(animateBubble)
+    }
+
+  </script>
+</body>
+
+</html>
